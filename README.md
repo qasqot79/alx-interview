@@ -34,4 +34,5 @@ A documentation is not a simple word, it’s a real sentence explaining what’s
 
 Project Description
 
-0. Pascal's Triangle - Create a function that returns a list of lists of integers representing the Pascal’s triangle of n. - 0-pascal_triangle.py.
+0. Pascal's Triangle - Create a function that returns a list of lists of integers representing the Pascal’s triangle of n. -1
+0-pascal_triangle.py.
