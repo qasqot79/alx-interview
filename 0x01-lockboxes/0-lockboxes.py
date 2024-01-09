@@ -1,28 +1,17 @@
 #!/usr/bin/python3
-""" Module that checks locked boxes """
+"""Script will unlock list of lists"""
 
 
 def canUnlockAll(boxes):
-    """ Method that determines if all boxes can be opened """
+    """This function will take a list of lists and the content
+       of a list will unlock other lists
+    """
 
-    if boxes == 0:
-        return False
-
-    if not isinstance(boxes, list):
-
-    if len(boxes) == 0:
-        return False
-
-    check = [0]
-    list_ing = [i for i in range(len(boxes))]
-    for in_check in check:
-        for in_boxes in boxes[in_check]:
-            if in_boxes not in check and in_boxes in list_ing:
-                if in_boxes >= len(boxes):
-                    return False
-                check.append(in_boxes)
-
-                if len(check) == len(boxes):
+    keys = [0]
+    for key in keys:
+        for boxKey in boxes[key]:
+            if boxKey not in keys and boxKey < len(boxes):
+                keys.append(boxKey)
+    if len(keys) == len(boxes):
         return True
-    else:
-        return False
+    return False
