@@ -1,45 +1,44 @@
 #!/usr/bin/python3
 """
-Prime Game
+Module: Game of choosing Prime numbers
 """
+
+
+def primeNumbers(n):
+    """Return list of prime numbers between 1 and n inclusive
+       Args:
+        n (int): upper boundary of range. lower boundary is always 1
+    """
+    primeNos = []
+    filtered = [True] * (n + 1)
+    for prime in range(2, n + 1):
+        if (filtered[prime]):
+            primeNos.append(prime)
+            for i in range(prime, n + 1, prime):
+                filtered[i] = False
+    return primeNos
+
 
 def isWinner(x, nums):
     """
-    Given a set of consecutive integers starting from 1 up to and including n,
-    hey take turns choosing a prime number from the set and removing that number
-    and its multiples from the set. The player that cannot make a move loses the game.
+    Determines winner of Prime Game
+    Args:
+        x (int): no. of rounds of game
+        nums (int): upper limit of range for each round
+    Return:
+        Name of winner (Maria or Ben) or None if winner cannot be found
     """
-    def is_prime(n):
-        if n <= 1:
-            return False
-        for i in range(2, int(n**0.5) + 1):
-            if n % i == 0:
-                return False
-        return True
-
-    def get_prime_count(n):
-        count = 0
-        for i in range(2, n + 1):
-            if is_prime(i):
-                count += 1
-        return count
-
-    maria = 0
-    ben = 0
-
-    for num in nums:
-        prime_count = get_prime_count(num)
-        if prime_count % 2 == 0:
-            ben += 1
-        else:
-            maria += 1
-
-    if maria > ben:
-        return "Maria"
-    elif ben > maria:
-        return "Ben"
-    else:
+    if x is None or nums is None or x == 0 or nums == []:
         return None
-
-
-print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+    Maria = Ben = 0
+    for i in range(x):
+        primeNos = primeNumbers(nums[i])
+        if len(primeNos) % 2 == 0:
+            Ben += 1
+        else:
+            Maria += 1
+    if Maria > Ben:
+        return 'Maria'
+    elif Ben > Maria:
+        return 'Ben'
+    return None
