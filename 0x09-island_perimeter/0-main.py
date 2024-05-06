@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+0#!/usr/bin/python3
 """
 0-main
 """
